@@ -301,12 +301,12 @@ section + section{border-top:1px solid var(--line)}
 /* ---------- Company logos ---------- */
 .logo{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;position:relative;
   background:var(--glass-bg-hover);box-shadow:inset 0 0 0 1px var(--line-2);overflow:hidden}
-.logo img{width:26px;height:26px;object-fit:contain;display:block}
+.logo img{width:26px;height:26px;object-fit:contain;display:block;border-radius:24%}
 .logo img.err{display:none}
 .logo::after{content:attr(data-letter);position:absolute;inset:0;display:grid;place-items:center;font-weight:500;font-size:1rem;color:var(--ink-2);opacity:0}
 .logo.fallback::after{opacity:1}
 .logo.multi{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:6px;place-items:center}
-.logo.multi img{width:14px;height:14px;border-radius:3px}
+.logo.multi img{width:14px;height:14px;border-radius:24%}
 .logo.light{background:#fff;box-shadow:none}
 .logo.fallback{background:var(--glass-bg-hover)}
 :root[data-theme="dark"] .logo img{filter:drop-shadow(0 0 0 transparent)}
