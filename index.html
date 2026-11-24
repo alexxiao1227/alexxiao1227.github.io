@@ -680,6 +680,33 @@ kbd{font-family:var(--mono);font-size:.72rem;padding:2px 6px;border-radius:6px;b
 }
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+/* ---------- Mobile polish ---------- */
+.now-card .kpi{flex-wrap:wrap}
+.now-card .kpi b{white-space:nowrap}
+.now-card .kpi span{flex:1 1 130px}
+.badge{font-size:.72rem}
+.kbd-btn,.theme-btn{flex:none}
+@media(max-width:900px){.portal .coord{transform:none;text-align:center}}
+@media(max-width:700px){
+  .tl-row{height:30px}
+  .tl-bar{top:11px}
+  .tl-bar.fut{top:10px}
+  .tl-name{font-size:.8rem}
+  .cmdk{padding-top:9vh}
+  #cmdkList{max-height:46vh}
+  #cmdkList li[role=option]{padding:13px 12px}
+  .cmdk-foot{display:none}
+}
+@media(pointer:coarse){
+  .fchip,.toggle-all{min-height:44px;padding-left:16px;padding-right:16px}
+  .next-scope li,.cap li{padding-top:8px;padding-bottom:8px}
+  footer a{padding:10px 0}
+}
+.nav .cta{white-space:nowrap}
+.cmdk-in kbd{cursor:pointer}
+@media(max-width:700px){.fchip,.toggle-all{min-height:44px;padding-left:16px;padding-right:16px}}
+@media(max-width:340px){.nav .brand .dot{display:none}.nav-right{gap:2px}.nav .cta{padding:10px 13px;font-size:.82rem}#themeToggle{display:none}}
+
 /* ---------- Scroll progress ---------- */
 .progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:60;background:transparent}
 .progress i{display:block;height:100%;width:100%;background:var(--ice);transform-origin:left;transform:scaleX(0)}
@@ -1592,6 +1619,7 @@ window.__logoErr=function(img){
     ckList.addEventListener('click',function(e){ var li=e.target.closest('[role=option]'); if (li) ckRun(+li.getAttribute('data-i')); });
     ckList.addEventListener('pointermove',function(e){ var li=e.target.closest('[role=option]'); if (!li) return; var i=+li.getAttribute('data-i'); if (i!==ckSel){ ckSel=i; var os=ckList.querySelectorAll('[role=option]'); for (var j=0;j<os.length;j++) os[j].setAttribute('aria-selected', j===ckSel); } });
     ck.querySelector('.cmdk-back').addEventListener('click',ckClose);
+    ck.querySelector('.cmdk-in kbd').addEventListener('click',ckClose);
     var ckBtn=document.getElementById('cmdkOpen');
     ckBtn.addEventListener('click',ckOpen);
     if (!/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent||'')) ckBtn.querySelector('kbd').textContent='Ctrl K';
