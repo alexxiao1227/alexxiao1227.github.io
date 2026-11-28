@@ -82,8 +82,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .lg img{width:64%;height:64%;object-fit:contain;display:block}
 .lg.err{visibility:hidden}
 .logos{display:flex;gap:2.4cqw;flex-wrap:wrap;align-items:center}
-.wall{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:2.4cqw 2cqw;margin-top:6cqw}
-.wall .lg{width:100%;height:auto;aspect-ratio:1}
+.wall{display:grid;gap:2.8cqw;margin:6cqw -7cqw 0;padding:.6cqw 0 1.4cqw;overflow:hidden;--s:10.8cqw}
+.mrow{display:flex}
+.mtrack{display:flex;flex:none;gap:2.8cqw;padding-right:2.8cqw;animation:mq var(--t,26s) linear infinite;will-change:transform}
+.mrow.rev .mtrack{animation-direction:reverse}
+@keyframes mq{to{transform:translateX(-50%)}}
 .phone button:focus,.nav:focus,.nav:focus-visible{outline:0}
 .btn:focus-visible,.top button:focus-visible,.back:focus-visible{outline:.6cqw solid currentColor;outline-offset:.8cqw}
 /* shapes */
@@ -98,7 +101,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* 1 cover */
 .s1{background:#0b0b0f;color:var(--paper)}
 .s1 .yr{font-stretch:125%;font-weight:900;font-size:30cqw;line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:.7cqw var(--lime)}
-.s1 .wr{font-stretch:125%;font-weight:900;font-size:13.6cqw;line-height:.86;letter-spacing:-.04em;color:var(--pink);text-transform:uppercase}
+.s1 .wr{white-space:nowrap;font-stretch:125%;font-weight:900;font-size:13.2cqw;line-height:.86;letter-spacing:-.04em;color:var(--pink);text-transform:uppercase}
 .s1 .hint{display:inline-flex;align-items:center;gap:2cqw;font-size:3.6cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase;animation:nudge 1.4s ease-in-out infinite}
 @keyframes nudge{50%{transform:translateX(2cqw)}}
 /* 2 applications */
@@ -162,7 +165,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .trio span{font-size:3.6cqw;font-weight:600}
 /* 12 persona */
 .s12{background:#0b0b0f;color:var(--paper)}
-.persona{background:var(--lime);color:var(--ink);border-radius:6cqw;padding:7cqw 6cqw 8cqw;transform:rotate(-3deg);box-shadow:3cqw 3cqw 0 var(--pink)}
+.persona{background:var(--lime);color:var(--ink);border-radius:6cqw;padding:7cqw 6cqw 8cqw;box-shadow:3cqw 3cqw 0 var(--pink)}
 .persona .h{font-size:11.2cqw}
 /* 13 summary */
 .s13{background:linear-gradient(160deg,#1a0b3a,#0b0b0f 60%);color:var(--paper);justify-content:flex-start;padding-top:20cqw}
@@ -185,10 +188,80 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .toast{position:absolute;z-index:50;left:50%;bottom:8cqw;transform:translate(-50%,6cqw);background:var(--paper);color:var(--ink);padding:2.6cqw 4.6cqw;border-radius:8cqw;font-weight:800;font-size:3.4cqw;opacity:0;transition:.3s var(--ease);pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+/* ---------- motion pack ---------- */
+.slide.on{z-index:2}
+.slide.was{opacity:1;visibility:visible;z-index:1}
+.conf{position:absolute;left:50%;top:46%;width:0;height:0;z-index:3;pointer-events:none}
+.conf i{position:absolute;left:0;top:0;width:2.2cqw;height:3.4cqw;border-radius:.5cqw;background:var(--c);opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .slide.on{animation:reveal .75s cubic-bezier(.3,.8,.2,1)}
+  @keyframes reveal{from{clip-path:circle(0% at var(--ox,82%) var(--oy,58%))}to{clip-path:circle(160% at var(--ox,82%) var(--oy,58%))}}
+  .phone.is-paused .slide.on,.phone.is-paused .slide.on *{animation-play-state:paused}
+  .slide:not(.on) *{animation-play-state:paused}
+
+  /* headlines land word by word */
+  .h .w{display:inline-block}
+  .slide.on .h .w{animation:wordUp .75s var(--ease) both;animation-delay:calc(var(--d,0) * 1s + var(--wi,0) * .08s)}
+  @keyframes wordUp{from{opacity:0;transform:translateY(70%) rotate(5deg)}}
+
+  /* big numbers keep breathing after they land */
+  .slide.on .big.pop{animation-name:pop,breathe;animation-duration:.9s,2.8s;animation-timing-function:cubic-bezier(.3,1.5,.5,1),ease-in-out;animation-fill-mode:forwards,none;animation-iteration-count:1,infinite;animation-delay:calc(var(--d,0) * 1s),calc(var(--d,0) * 1s + 1.1s)}
+  @keyframes breathe{50%{scale:1.035}}
+
+  /* logo tiles: float, bob, spin in */
+  .lg.shape{animation:floaty 5.5s ease-in-out infinite}
+  @keyframes floaty{50%{translate:0 -2.6cqw;rotate:5deg}}
+  .logos .lg{animation:bob 3.2s ease-in-out infinite;animation-delay:calc(var(--i,0) * -.28s)}
+  .slide.on .logos .lg.pop{animation-name:pop,bob;animation-duration:.9s,3.2s;animation-timing-function:cubic-bezier(.3,1.5,.5,1),ease-in-out;animation-fill-mode:forwards,none;animation-iteration-count:1,infinite;animation-delay:calc(var(--d,0) * 1s),calc(var(--d,0) * 1s + .9s)}
+  @keyframes bob{50%{translate:0 -1.3cqw}}
+  .slide.on .rank .lg{animation:spinIn .85s var(--ease) both;animation-delay:calc(var(--d,0) * 1s + .12s)}
+  @keyframes spinIn{from{rotate:-200deg;scale:0}}
+  .slide.on .rows .lg{animation:spinIn .8s var(--ease) both,bob 3s ease-in-out 1s infinite;animation-delay:calc(var(--d,0) * 1s + .2s),calc(var(--d,0) * 1s + 1.2s)}
+
+  /* cover */
+  .s1 .wr .l{display:inline-block}
+  .slide.on .s1wr .l,.slide.on.s1 .wr .l{animation:wave 2.4s ease-in-out infinite;animation-delay:calc(1.4s + var(--li,0) * .09s)}
+  @keyframes wave{0%,60%,100%{translate:0 0}30%{translate:0 -2.2cqw}}
+  .slide.on.s1 .yr{animation:pop .9s cubic-bezier(.3,1.5,.5,1) forwards,strokeShift 4s ease-in-out 1.2s infinite;animation-delay:calc(var(--d,0) * 1s),1.2s}
+  @keyframes strokeShift{50%{-webkit-text-stroke-color:var(--pink);filter:drop-shadow(0 0 3cqw rgba(255,61,139,.55))}}
+
+  /* chart: October keeps pulsing */
+  .slide.on .chart .hot i{animation:grow 1s var(--ease) forwards,barPulse 1.3s ease-in-out 2.2s infinite;animation-delay:calc(.5s + var(--n) * .07s),2.2s}
+  @keyframes barPulse{50%{box-shadow:0 0 6cqw var(--pink);filter:brightness(1.25)}}
+  .slide.on .chart .hot b{animation:in .5s ease forwards,hop .9s ease-in-out 2.2s infinite;animation-delay:calc(1.3s + var(--n) * .07s),2.2s}
+  @keyframes hop{50%{translate:0 -1.6cqw;scale:1.25}}
+
+  /* rows slide in from the side */
+  .s4 .rank li.a{transform:translateX(16cqw)}
+  .s9 .rows .a{transform:translateX(-14cqw)}
+  .s5 .ring{animation:ringPulse 3.4s ease-in-out infinite}
+  @keyframes ringPulse{50%{scale:1.08;opacity:.6}}
+
+  /* rejections: the wall of "unfortunately" scrolls, the number flinches */
+  .rain{animation:rainUp 1.5s linear infinite}
+  @keyframes rainUp{to{translate:0 -7.5cqw}}
+  .slide.on.s6 .big.pop{animation-name:pop,shake,breathe;animation-duration:.9s,.5s,2.8s;animation-timing-function:cubic-bezier(.3,1.5,.5,1),linear,ease-in-out;animation-fill-mode:forwards,none,none;animation-iteration-count:1,1,infinite;animation-delay:.4s,1.5s,2.2s}
+  @keyframes shake{20%{translate:-1.6cqw 0}40%{translate:1.6cqw 0}60%{translate:-1cqw 0}80%{translate:1cqw 0}}
+
+  /* cold vs warm: the winner shimmers */
+  .vs .row.win .track i{background-image:linear-gradient(45deg,rgba(255,255,255,.28) 25%,transparent 25% 50%,rgba(255,255,255,.28) 50% 75%,transparent 75%);background-size:6cqw 6cqw}
+  .slide.on .vs .row.win .track i{animation:growx 1.2s var(--ease) forwards,stripes 1.1s linear infinite;animation-delay:calc(var(--d) * 1s),0s}
+  @keyframes stripes{to{background-position:6cqw 0}}
+
+  /* persona card rocks, summary card settles */
+  .slide.on .persona{animation:pop .9s cubic-bezier(.3,1.5,.5,1) forwards,rock 4.5s ease-in-out 1.5s infinite;animation-delay:calc(var(--d,0) * 1s),1.5s}
+  @keyframes rock{0%,100%{rotate:-3deg}50%{rotate:2.5deg}}
+  .persona{rotate:-3deg}
+  .slide.on .conf i{animation:conf 1.7s cubic-bezier(.15,.7,.3,1) both;animation-delay:calc(.55s + var(--n) * .018s)}
+  @keyframes conf{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.4)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1)}}
+  .blob{will-change:border-radius}
+}
+
 @media (prefers-reduced-motion:reduce){
   .a,.pop{opacity:1;transform:none} .slide.on .a,.slide.on .pop{animation:none}
   .chart i,.vs .track i{transform:none} .chart b{opacity:1}
-  .blob,.spin,.tape span,.s1 .hint{animation:none}
+  .blob,.spin,.tape span,.s1 .hint,.mtrack{animation:none}
+  .wall{overflow-x:auto}
 }
 </style>
 </head>
@@ -290,11 +363,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <p class="k a" style="--d:.1">What actually worked</p>
     <div class="vs">
       <div class="row a" style="--d:.4">
-        <div class="lab"><span>Cold applications</span><b>10%</b></div>
+        <div class="lab"><span>Cold applications</span><b><span data-count="10">0</span>%</b></div>
         <div class="track"><i style="--v:10;--d:.8"></i></div>
       </div>
       <div class="row win a" style="--d:1.2">
-        <div class="lab"><span>Warm intros</span><b>61%</b></div>
+        <div class="lab"><span>Warm intros</span><b><span data-count="61">0</span>%</b></div>
         <div class="track"><i style="--v:61;--d:1.6"></i></div>
       </div>
     </div>
@@ -344,6 +417,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <!-- 12 -->
   <section class="slide s12" data-dur="7000" aria-label="Persona">
     <i class="shape ring spin" style="width:120cqw;height:120cqw;left:-10cqw;top:20cqw;color:rgba(143,91,255,.35);border-width:1cqw;border-style:dashed"></i>
+    <div class="conf" aria-hidden="true"></div>
     <p class="k a" style="--d:.1">Your 2026 persona</p>
     <div class="gap"></div>
     <div class="persona pop" style="--d:.5">
@@ -356,6 +430,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
   <!-- 13 -->
   <section class="slide s13" data-dur="0" aria-label="Summary">
+    <div class="conf" aria-hidden="true" style="top:38%"></div>
     <div class="card pop" id="card" style="--d:.2">
       <h2>Alex Xiao<br><span>2026 Wrapped</span></h2>
       <div class="logos" style="--s:7.1cqw;gap:2cqw;flex-wrap:nowrap;margin-top:3.6cqw" aria-hidden="true"><i class="lg" data-d="tesla.com"></i><i class="lg" data-d="salesforce.com"></i><i class="lg" data-d="nike.com"></i><i class="lg" data-d="uber.com"></i><i class="lg" data-d="jobright.ai"></i><i class="lg" data-d="launchpointhq.com"></i><i class="lg" data-d="pump.fun"></i><i class="lg" data-d="suno.com"></i></div>
@@ -393,7 +468,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   const fills = [...bars.querySelectorAll('b')];
   // company logos
   const WALL = ['tesla.com','nvidia.com','apple.com','google.com','meta.com','microsoft.com','adobe.com','roblox.com','intuit.com','ibm.com','coinbase.com','stripe.com','spacex.com','atlassian.com','notion.so','figma.com','databricks.com','netflix.com','spotify.com','visa.com','datadoghq.com','scale.com','rivian.com','pinterest.com','janestreet.com','doordash.com','robinhood.com','duolingo.com','cloudflare.com','mongodb.com','anduril.com','waymo.com'];
-  document.getElementById('wall').innerHTML = WALL.map((d, i) => '<i class="lg pop" data-d="' + d + '" style="--d:' + (1.5 + i * 0.045).toFixed(2) + '"></i>').join('');
+  WALL.push('rippling.com','patreon.com','ea.com','tiktok.com','servicenow.com','accenture.com','samsara.com','workday.com');
+  // four rows, alternating direction, each looping seamlessly
+  const ROWS = 4, per = WALL.length / ROWS;
+  document.getElementById('wall').innerHTML = Array.from({ length: ROWS }, (_, r) => {
+    const tiles = WALL.slice(r * per, (r + 1) * per).map(d => '<i class="lg" data-d="' + d + '"></i>').join('');
+    return '<div class="mrow a' + (r % 2 ? ' rev' : '') + '" style="--d:' + (1.5 + r * 0.14).toFixed(2) + ';--t:' + [24, 30, 21, 27][r] + 's"><div class="mtrack">' + tiles + tiles + '</div></div>';
+  }).join('');
   const tape = document.getElementById('tape'); tape.innerHTML += tape.innerHTML;
   const SPECIAL = { 'salesforce.com': 'https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/logo-salesforce.svg', 'polymath': 'https://alexxiao1227.github.io/polymath.png' };
   document.querySelectorAll('.lg[data-d]').forEach(el => {
@@ -403,9 +484,33 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     img.src = SPECIAL[d] || 'https://www.google.com/s2/favicons?domain=' + d + '&sz=128';
     el.appendChild(img);
   });
+  // motion helpers: words, letters, stagger indexes, confetti
+  document.querySelectorAll('.slide .h').forEach(h => {
+    let wi = 0;
+    [...h.childNodes].forEach(n => {
+      if (n.nodeType !== 3 || !n.textContent.trim()) return;
+      const f = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(t => {
+        if (!t.trim()) { f.appendChild(document.createTextNode(t)); return; }
+        const w = document.createElement('span'); w.className = 'w'; w.style.setProperty('--wi', wi++); w.textContent = t; f.appendChild(w);
+      });
+      h.replaceChild(f, n);
+    });
+  });
+  const wr = document.querySelector('.s1 .wr');
+  if (wr) wr.innerHTML = [...wr.textContent].map((c, i) => '<span class="l" style="--li:' + i + '">' + c + '</span>').join('');
+  document.querySelectorAll('.logos').forEach(g => [...g.children].forEach((el, i) => el.style.setProperty('--i', i)));
+  const COLS = ['#c8ff3d', '#ff3d8b', '#ffd60a', '#2f5bff', '#ff7a1a', '#18d9a6', '#fff8ec'];
+  document.querySelectorAll('.conf').forEach(c => {
+    c.innerHTML = Array.from({ length: 34 }, (_, n) => {
+      const a = Math.random() * Math.PI * 2, d = 26 + Math.random() * 46;
+      return '<i style="--n:' + n + ';--c:' + COLS[n % COLS.length] + ';--x:' + (Math.cos(a) * d).toFixed(1) + 'cqw;--y:' + (Math.sin(a) * d * 1.25 + 14).toFixed(1) + 'cqw;--r:' + Math.round(Math.random() * 900 - 450) + 'deg"></i>';
+    }).join('');
+  });
   document.getElementById('rain').textContent = Array(120).fill('unfortunately').join(' ');
 
   let cur = -1, t0 = 0, elapsed = 0, paused = false, raf = 0, started = false;
+  const HOLD = /[?&]hold\b/.test(location.search);   // preview aid: stay on one slide, animations still run
 
   function count(el) {
     const to = +el.dataset.count, comma = el.dataset.comma;
@@ -424,6 +529,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   function show(i) {
     i = Math.max(0, Math.min(slides.length - 1, i));
     if (i === cur) return;
+    const prevEl = slides[cur];
+    if (prevEl) { prevEl.classList.add('was'); setTimeout(() => prevEl.classList.remove('was'), 800); }
     slides.forEach((s, k) => s.classList.toggle('on', k === i));
     cur = i; elapsed = 0; t0 = performance.now();
     phone.classList.toggle('dark-ui', slides[i].dataset.ui === 'dark');
@@ -438,7 +545,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     const dur = +slides[cur].dataset.dur;
     if (!dur) { fills[cur].style.transform = 'scaleX(1)'; return; }
     if (cur === 0 && !started) return;            // cover waits for the first tap
-    if (!paused) elapsed += now - t0;
+    phone.classList.toggle('is-paused', paused);
+    if (!paused && !HOLD) elapsed += now - t0;
     t0 = now;
     const p = Math.min(1, elapsed / dur);
     fills[cur].style.transform = `scaleX(${p})`;
@@ -451,7 +559,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   // tap zones, with press-and-hold to pause
   let downAt = 0, held = false, holdT = 0;
   const down = () => { downAt = performance.now(); held = false; holdT = setTimeout(() => { held = true; paused = true; }, 220); };
-  const up = fn => () => { clearTimeout(holdT); if (held) { paused = userPaused; held = false; return; } fn(); };
+  const up = fn => e => {
+    clearTimeout(holdT);
+    if (held) { paused = userPaused; held = false; return; }
+    if (e && e.clientX != null) { const r = phone.getBoundingClientRect(); phone.style.setProperty('--ox', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); phone.style.setProperty('--oy', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); }
+    fn();
+  };
   let userPaused = false;
   ['next', 'prev'].forEach(id => {
     const el = document.getElementById(id);
