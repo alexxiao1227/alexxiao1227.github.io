@@ -21,6 +21,7 @@
 <meta name="twitter:image" content="https://alexxiao1227.github.io/og-image.png?v=3">
 <link rel="preconnect" href="https://www.google.com">
 <meta name="color-scheme" content="dark light">
+<script>try{if(!localStorage.getItem("wrapbar-x"))document.documentElement.classList.add("has-bar")}catch(e){document.documentElement.classList.add("has-bar")}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -711,6 +712,27 @@ kbd{font-family:var(--mono);font-size:.72rem;padding:2px 6px;border-radius:6px;b
 .progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:60;background:transparent}
 .progress i{display:block;height:100%;width:100%;background:var(--ice);transform-origin:left;transform:scaleX(0)}
 
+/* ---------- 2026 Wrapped banner ---------- */
+:root{--bar-h:0px}
+html.has-bar{--bar-h:40px}
+.wrapbar{position:fixed;top:0;left:0;right:0;height:40px;z-index:58;display:none;align-items:center;justify-content:center;gap:12px;padding:0 46px 0 14px;background:#c8ff3d;color:#0b0b0f;font-size:.86rem;font-weight:500;white-space:nowrap;overflow:hidden;transition:background .25s}
+html.has-bar .wrapbar{display:flex}
+.wrapbar:hover{background:#d6ff66}
+.wrapbar b{font-weight:700}
+.wb-tag{background:#0b0b0f;color:#c8ff3d;font-size:.66rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;flex:none}
+.wb-txt{overflow:hidden;text-overflow:ellipsis}
+.wb-go{display:inline-flex;align-items:center;gap:6px;font-weight:700;flex:none}
+.wb-go svg{width:11px;height:11px;transition:transform .35s var(--ease)}
+.wrapbar:hover .wb-go svg{transform:translateX(3px)}
+.wb-x{position:fixed;top:0;right:0;width:40px;height:40px;z-index:59;display:none;place-items:center;color:#0b0b0f;font-size:1.25rem;line-height:1;opacity:.6}
+.wb-x:hover{opacity:1}
+html.has-bar .wb-x{display:grid}
+.progress{top:var(--bar-h)}
+.nav{top:calc(14px + var(--bar-h))}
+.hero{padding-top:calc(var(--nav-h) + 60px + var(--bar-h))}
+section{scroll-margin-top:calc(var(--nav-h) + 14px + var(--bar-h))}
+@media(max-width:700px){.wb-long{display:none}}
+
 /* ---------- Reduced motion ---------- */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001s!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.001s!important;transition-delay:0s!important}
@@ -727,6 +749,12 @@ kbd{font-family:var(--mono);font-size:.72rem;padding:2px 6px;border-radius:6px;b
 </head>
 <body>
 <a class="skip" href="#about">Skip to content</a>
+<a class="wrapbar" id="wrapbar" href="wrapped" aria-label="New: Alex Xiao 2026 Wrapped. Open the story.">
+  <span class="wb-tag">New</span>
+  <span class="wb-txt"><b>2026 Wrapped</b><span class="wb-long"> · 175+ applications, 70+ rejections, one yes from Tesla</span></span>
+  <span class="wb-go">Watch<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5"/></svg></span>
+</a>
+<button class="wb-x" id="wrapbarX" aria-label="Dismiss the 2026 Wrapped banner">×</button>
 
 <div class="field" aria-hidden="true"><div class="glow"></div><div class="glow b"></div><div class="spot"></div></div>
 <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
@@ -1239,7 +1267,7 @@ kbd{font-family:var(--mono);font-size:.72rem;padding:2px 6px;border-radius:6px;b
 
 <footer>
   <span>Alex Xiao — Berkeley, CA</span>
-  <span>Updated Nov 2026 · press <kbd>/</kbd> to jump anywhere</span>
+  <span>Updated Nov 2026 · <a href="wrapped">2026 Wrapped</a> · press <kbd>/</kbd> to jump anywhere</span>
   <a href="https://alexxiao1227.github.io/">alexxiao1227.github.io</a>
   <span>© 2026</span>
 </footer>
@@ -1566,6 +1594,10 @@ window.__logoErr=function(img){
     b.addEventListener('click',function(){ setFilter(f); });
   });
 
+  /* ---------- 2026 Wrapped banner: dismiss ---------- */
+  var wbX=document.getElementById('wrapbarX');
+  if (wbX) wbX.addEventListener('click',function(){ root.classList.remove('has-bar'); try{ localStorage.setItem('wrapbar-x','1'); }catch(e){} });
+
   /* ---------- Command palette ---------- */
   var ck=document.getElementById('cmdk'), ckIn=document.getElementById('cmdkInput'), ckList=document.getElementById('cmdkList');
   var ckItems=[], ckView=[], ckSel=0, ckPrev=null, toastEl=document.getElementById('toast'), toastT;
@@ -1587,6 +1619,7 @@ window.__logoErr=function(img){
     {g:'Actions',l:'Email Alex',h:'Opens your mail app',run:function(){ location.href='mailto:alexxiao1227@gmail.com'; }},
     {g:'Actions',l:'LinkedIn',h:'New tab',run:function(){ window.open('https://linkedin.com/in/alex-xiao-a17375232','_blank','noopener'); }},
     {g:'Actions',l:'Content portfolio',h:'18 videos · 7.1M views',run:function(){ window.open('https://alexxiao1227.github.io/content-portfolio/','_blank','noopener'); }},
+    {g:'Actions',l:'2026 Wrapped',h:'The year in numbers',run:function(){ location.href='wrapped'; }},
     {g:'Actions',l:'Toggle light / dark',h:'Theme',run:function(){ btn.click(); }}
   );
   function ckPaint(){

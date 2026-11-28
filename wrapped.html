@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alex Xiao · 2026 Wrapped</title>
+<meta name="description" content="Alex Xiao's 2026, wrapped: 175+ applications, 70+ rejections, 11 roles, 15M+ views and one yes from Tesla.">
+<meta name="theme-color" content="#0b0b0f">
+<meta property="og:title" content="Alex Xiao · 2026 Wrapped">
+<meta property="og:description" content="175+ applications. 70+ rejections. One yes from Tesla.">
+<link rel="canonical" href="https://alexxiao1227.github.io/wrapped">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexxiao1227.github.io/wrapped">
+<meta property="og:image" content="https://alexxiao1227.github.io/wrapped-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alexxiao1227.github.io/wrapped-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c8ff3d'/%3E%3Ctext x='16' y='22' font-family='Arial Black,Arial' font-weight='900' font-size='15' text-anchor='middle'%3E26%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0b0f; --paper:#fff8ec;
+  --lime:#c8ff3d; --pink:#ff3d8b; --purple:#3a1578; --blue:#2f5bff; --orange:#ff7a1a;
+  --mint:#18d9a6; --yellow:#ffd60a; --red:#e82127; --violet:#8f5bff;
+  --ease:cubic-bezier(.2,.9,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:#050507;color:var(--paper);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-stretch:100%;
+  -webkit-font-smoothing:antialiased;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
+}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.stage{position:fixed;inset:0;display:grid;place-items:center;background:
+  radial-gradient(60% 50% at 20% 10%,rgba(255,61,139,.22),transparent 70%),
+  radial-gradient(50% 50% at 85% 90%,rgba(200,255,61,.16),transparent 70%),#050507}
+.phone{
+  position:relative;overflow:hidden;
+  width:min(100vw,calc(100dvh * 9 / 16));height:min(100dvh,calc(100vw * 16 / 9));
+  container-type:size;background:var(--ink);
+  touch-action:manipulation;
+}
+@media(min-width:700px){.phone{height:min(94dvh,900px);width:calc(min(94dvh,900px) * 9 / 16);border-radius:28px;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}}
+
+/* ---------- chrome ---------- */
+.bars{position:absolute;z-index:30;left:3.5cqw;right:3.5cqw;top:calc(2.4cqw + env(safe-area-inset-top));display:flex;gap:1cqw}
+.bars i{flex:1;height:.8cqw;border-radius:1cqw;background:rgba(255,255,255,.3);overflow:hidden;mix-blend-mode:normal}
+.bars i b{display:block;height:100%;width:100%;background:#fff;transform-origin:left;transform:scaleX(0)}
+.dark-ui .top{color:var(--ink)}
+.dark-ui .bars i{background:rgba(0,0,0,.22)} .dark-ui .bars i b{background:#0b0b0f}
+.top{position:absolute;z-index:30;left:4.5cqw;right:4.5cqw;top:calc(6cqw + env(safe-area-inset-top));display:flex;justify-content:space-between;align-items:center;font-size:3.1cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.top button{width:8cqw;height:8cqw;display:grid;place-items:center;border-radius:50%;position:relative;z-index:40}
+.top svg{width:4.4cqw;height:4.4cqw}
+.nav{position:absolute;z-index:20;top:0;bottom:0}
+.nav.prev{left:0;width:32%} .nav.next{right:0;width:68%}
+
+/* ---------- slides ---------- */
+.slide{position:absolute;inset:0;padding:22cqw 7cqw calc(12cqw + env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s .35s}
+.slide.on{opacity:1;visibility:visible;transition:opacity .35s ease}
+.a{opacity:0;transform:translateY(7cqw) scale(.97)}
+.slide.on .a{animation:in .8s var(--ease) forwards;animation-delay:calc(var(--d,0) * 1s)}
+@keyframes in{to{opacity:1;transform:none}}
+.pop{opacity:0;transform:scale(.6) rotate(-4deg)}
+.slide.on .pop{animation:pop .9s cubic-bezier(.3,1.5,.5,1) forwards;animation-delay:calc(var(--d,0) * 1s)}
+@keyframes pop{to{opacity:1;transform:none}}
+
+.k{font-size:4.2cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.h{font-stretch:125%;font-weight:900;font-size:11.5cqw;line-height:.94;letter-spacing:-.02em;text-transform:uppercase}
+.h.s{font-size:9cqw}
+.big{font-stretch:125%;font-weight:900;font-size:34cqw;line-height:.82;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.big.m{font-size:25cqw}
+.p{font-size:5cqw;line-height:1.28;font-weight:500;max-width:30em}
+.p b{font-weight:800}
+.foot{position:absolute;left:7cqw;right:7cqw;bottom:calc(6cqw + env(safe-area-inset-bottom));font-size:2.8cqw;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
+.gap{height:5cqw} .gap2{height:9cqw}
+
+/* shapes */
+.shape{position:absolute;pointer-events:none;z-index:0}
+.slide>*:not(.shape):not(.foot){position:relative;z-index:1}
+.ring{border-radius:50%;border:5cqw solid currentColor}
+.blob{border-radius:42% 58% 63% 37% / 45% 40% 60% 55%;animation:morph 9s ease-in-out infinite alternate}
+@keyframes morph{to{border-radius:60% 40% 35% 65% / 55% 62% 38% 45%;transform:rotate(25deg) scale(1.08)}}
+.stripes{background:repeating-linear-gradient(135deg,currentColor 0 3cqw,transparent 3cqw 6cqw)}
+.spin{animation:spin 26s linear infinite} @keyframes spin{to{transform:rotate(360deg)}}
+
+/* 1 cover */
+.s1{background:#0b0b0f;color:var(--paper)}
+.s1 .yr{font-stretch:125%;font-weight:900;font-size:30cqw;line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:.7cqw var(--lime)}
+.s1 .wr{font-stretch:125%;font-weight:900;font-size:13.6cqw;line-height:.86;letter-spacing:-.04em;color:var(--pink);text-transform:uppercase}
+.s1 .hint{display:inline-flex;align-items:center;gap:2cqw;font-size:3.6cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase;animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(2cqw)}}
+/* 2 applications */
+.s2{background:var(--pink);color:var(--ink)}
+/* 3 months */
+.s3{background:var(--purple);color:var(--paper)}
+.chart{display:flex;align-items:flex-end;gap:1.6cqw;height:62cqw;margin:4cqw 0 2cqw}
+.chart div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:1.4cqw;font-size:2.6cqw;font-weight:700}
+.chart i{display:block;width:100%;border-radius:1.2cqw 1.2cqw 0 0;background:var(--lime);height:calc(var(--v) * 1%);min-height:.8cqw;transform:scaleY(0);transform-origin:bottom}
+.slide.on .chart i{animation:grow 1s var(--ease) forwards;animation-delay:calc(.5s + var(--n) * .07s)}
+@keyframes grow{to{transform:none}}
+.chart .hot i{background:var(--pink)}
+.chart b{font-weight:800;font-size:3cqw;opacity:0}
+.slide.on .chart b{animation:in .5s ease forwards;animation-delay:calc(1.3s + var(--n) * .07s)}
+/* 4 top list */
+.s4{background:var(--lime);color:var(--ink)}
+.rank{list-style:none;display:grid;gap:2.6cqw;margin-top:5cqw}
+.rank li{display:grid;grid-template-columns:11cqw 1fr auto;align-items:baseline;gap:2cqw;border-bottom:.5cqw solid var(--ink);padding-bottom:2cqw}
+.rank li span:first-child{font-stretch:125%;font-weight:900;font-size:9cqw;line-height:1}
+.rank li strong{font-stretch:125%;font-weight:900;font-size:8.2cqw;line-height:1;text-transform:uppercase;letter-spacing:-.02em}
+.rank li em{font-style:normal;font-weight:700;font-size:4cqw}
+.rank li:first-child strong{font-size:12cqw}
+/* 5 tesla */
+.s5{background:var(--red);color:#fff}
+/* 6 rejections */
+.s6{background:#0b0b0f;color:var(--paper)}
+.rain{position:absolute;inset:0;overflow:hidden;z-index:0;opacity:.1;font-weight:800;font-size:5cqw;text-transform:lowercase;line-height:1.5;word-spacing:3cqw;transform:rotate(-8deg) scale(1.3)}
+.s6 .big{color:var(--pink)}
+/* 7 what worked */
+.s7{background:var(--yellow);color:var(--ink)}
+.vs{display:grid;gap:5cqw;margin-top:6cqw}
+.vs .row{display:grid;gap:1.6cqw}
+.vs .lab{display:flex;justify-content:space-between;align-items:baseline;font-weight:800;font-size:4.4cqw;text-transform:uppercase;letter-spacing:.02em}
+.vs .lab b{font-stretch:125%;font-weight:900;font-size:13cqw;line-height:.9;letter-spacing:-.03em}
+.vs .track{height:6cqw;border-radius:6cqw;background:rgba(11,11,15,.14);overflow:hidden}
+.vs .track i{display:block;height:100%;width:calc(var(--v) * 1%);background:var(--ink);border-radius:inherit;transform:scaleX(0);transform-origin:left}
+.slide.on .vs .track i{animation:growx 1.2s var(--ease) forwards;animation-delay:calc(var(--d) * 1s)}
+@keyframes growx{to{transform:none}}
+.vs .row.win .track i{background:var(--pink)}
+/* 8 roles */
+.s8{background:var(--blue);color:#fff}
+.tape{position:absolute;left:-10%;right:-10%;bottom:20cqw;z-index:0;transform:rotate(-6deg);background:var(--lime);color:var(--ink);padding:2.4cqw 0;overflow:hidden;white-space:nowrap;font-stretch:125%;font-weight:900;font-size:5.4cqw;text-transform:uppercase}
+.tape span{display:inline-block;animation:tape 22s linear infinite}
+@keyframes tape{to{transform:translateX(-50%)}}
+/* 9 views */
+.s9{background:var(--orange);color:var(--ink)}
+.rows{display:grid;gap:2.4cqw;margin-top:5cqw}
+.rows div{display:flex;justify-content:space-between;align-items:baseline;gap:3cqw;border-top:.5cqw solid var(--ink);padding-top:2.2cqw;font-weight:700;font-size:4.2cqw}
+.rows b{font-stretch:125%;font-weight:900;font-size:8cqw;line-height:1}
+/* 10 hours */
+.s10{background:var(--mint);color:var(--ink)}
+/* 11 event */
+.s11{background:var(--violet);color:#fff}
+.trio{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3cqw;margin-top:6cqw}
+.trio div{background:rgba(11,11,15,.9);border-radius:4cqw;padding:4cqw}
+.trio b{display:block;font-stretch:125%;font-weight:900;font-size:8.6cqw;line-height:.95;color:var(--lime);margin-bottom:1cqw}
+.trio span{font-size:3.6cqw;font-weight:600}
+/* 12 persona */
+.s12{background:#0b0b0f;color:var(--paper)}
+.persona{background:var(--lime);color:var(--ink);border-radius:6cqw;padding:7cqw 6cqw 8cqw;transform:rotate(-3deg);box-shadow:3cqw 3cqw 0 var(--pink)}
+.persona .h{font-size:11.2cqw}
+/* 13 summary */
+.s13{background:linear-gradient(160deg,#1a0b3a,#0b0b0f 60%);color:var(--paper);justify-content:flex-start;padding-top:20cqw}
+.card{background:var(--paper);color:var(--ink);border-radius:5cqw;padding:5.5cqw 5.5cqw 5cqw;box-shadow:2.4cqw 2.4cqw 0 var(--lime)}
+.card h2{font-stretch:125%;font-weight:900;font-size:8.4cqw;line-height:.92;text-transform:uppercase;letter-spacing:-.02em}
+.card h2 span{color:var(--pink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:3.4cqw 4cqw;margin-top:5cqw}
+.grid div{border-top:.5cqw solid var(--ink);padding-top:1.8cqw}
+.grid small{display:block;font-size:2.7cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.65}
+.grid b{display:block;font-stretch:125%;font-weight:900;font-size:8.6cqw;line-height:1;letter-spacing:-.03em;margin-top:.6cqw}
+.card .next{margin-top:5cqw;background:var(--ink);color:var(--paper);border-radius:3cqw;padding:3.2cqw 4cqw;font-size:3.5cqw;font-weight:700;display:flex;justify-content:space-between;gap:3cqw;align-items:center}
+.card .next b{color:var(--lime);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:2.9cqw}
+.card .url{margin-top:3cqw;font-size:2.6cqw;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.55}
+.actions{display:flex;gap:3cqw;margin-top:6cqw;position:relative;z-index:40}
+.btn{flex:1;padding:4cqw 3cqw;border-radius:10cqw;font-weight:800;font-size:4cqw;text-transform:uppercase;letter-spacing:.04em;text-align:center}
+.btn.primary{background:var(--lime);color:var(--ink)}
+.btn.ghost{border:.5cqw solid rgba(255,248,236,.5)}
+.back{display:block;position:relative;z-index:40;margin-top:5cqw;text-align:center;color:var(--paper);font-size:3.4cqw;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:underline;text-underline-offset:1cqw;opacity:.8}
+.toast{position:absolute;z-index:50;left:50%;bottom:8cqw;transform:translate(-50%,6cqw);background:var(--paper);color:var(--ink);padding:2.6cqw 4.6cqw;border-radius:8cqw;font-weight:800;font-size:3.4cqw;opacity:0;transition:.3s var(--ease);pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  .a,.pop{opacity:1;transform:none} .slide.on .a,.slide.on .pop{animation:none}
+  .chart i,.vs .track i{transform:none} .chart b{opacity:1}
+  .blob,.spin,.tape span,.s1 .hint{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="stage">
+<main class="phone" id="phone" aria-roledescription="story" aria-label="Alex Xiao 2026 Wrapped">
+  <div class="bars" id="bars" aria-hidden="true"></div>
+  <div class="top"><span>Alex Xiao · 2026 Wrapped</span>
+    <button id="pause" aria-label="Pause"><svg id="icPause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+  </div>
+
+  <!-- 1 -->
+  <section class="slide s1" data-dur="5200" aria-label="Cover">
+    <i class="shape blob" style="width:70cqw;height:70cqw;right:-28cqw;top:-10cqw;background:var(--purple)"></i>
+    <i class="shape ring spin" style="width:46cqw;height:46cqw;left:-20cqw;bottom:-8cqw;color:var(--pink);border-style:dashed"></i>
+    <p class="k a" style="--d:.1">Alex Xiao</p>
+    <div class="gap"></div>
+    <div class="yr pop" style="--d:.25">2026</div>
+    <div class="wr a" style="--d:.55">Wrapped</div>
+    <div class="gap2"></div>
+    <p class="hint a" style="--d:1.1">Tap to see the damage <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide s2" data-dur="6000" data-ui="dark" aria-label="Applications">
+    <i class="shape stripes" style="width:60cqw;height:60cqw;right:-22cqw;bottom:-14cqw;border-radius:50%;color:var(--ink);opacity:.9"></i>
+    <p class="k a" style="--d:.1">You spent 2026 applying.</p>
+    <div class="gap"></div>
+    <div class="big m pop" style="--d:.4"><span data-count="175">0</span>+</div>
+    <div class="h s a" style="--d:.9">applications</div>
+    <div class="gap"></div>
+    <p class="p a" style="--d:1.3">To <b>65+ companies</b>, according to your inbox. It tried to keep count.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide s3" data-dur="7000" aria-label="Applications by month">
+    <p class="k a" style="--d:.1">Then October happened.</p>
+    <div class="chart" aria-hidden="true">
+      <div style="--n:0"><b>11</b><i style="--v:10.3"></i>J</div>
+      <div style="--n:1"><b>6</b><i style="--v:5.6"></i>F</div>
+      <div style="--n:2"><b>5</b><i style="--v:4.7"></i>M</div>
+      <div style="--n:3"><b>4</b><i style="--v:3.7"></i>A</div>
+      <div style="--n:4"><b>0</b><i style="--v:0"></i>M</div>
+      <div style="--n:5"><b>0</b><i style="--v:0"></i>J</div>
+      <div style="--n:6"><b>1</b><i style="--v:.9"></i>J</div>
+      <div style="--n:7"><b>3</b><i style="--v:2.8"></i>A</div>
+      <div style="--n:8"><b>6</b><i style="--v:5.6"></i>S</div>
+      <div style="--n:9" class="hot"><b>107</b><i style="--v:100"></i>O</div>
+      <div style="--n:10"><b>48</b><i style="--v:44.9"></i>N</div>
+    </div>
+    <div class="h s a" style="--d:1.9">107 in 31 days.</div>
+    <div class="gap"></div>
+    <p class="p a" style="--d:2.3">That is <b>3.5 applications a day</b>. While working four jobs.</p>
+    <p class="foot">Application confirmations received per month</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide s4" data-dur="7000" data-ui="dark" aria-label="Top companies">
+    <p class="k a" style="--d:.1">Your top companies</p>
+    <ol class="rank">
+      <li class="a" style="--d:.3"><span>1</span><strong>Tesla</strong><em>28 apps</em></li>
+      <li class="a" style="--d:.5"><span>2</span><strong>NVIDIA</strong><em>11</em></li>
+      <li class="a" style="--d:.7"><span>3</span><strong>Apple</strong><em>8</em></li>
+      <li class="a" style="--d:.9"><span>4</span><strong>Roblox</strong><em>6</em></li>
+      <li class="a" style="--d:1.1"><span>5</span><strong>Intuit</strong><em>5</em></li>
+    </ol>
+    <p class="foot">Ranked by applications sent</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide s5" data-dur="7000" aria-label="Tesla">
+    <i class="shape ring" style="width:90cqw;height:90cqw;right:-45cqw;top:-20cqw;color:rgba(0,0,0,.18)"></i>
+    <p class="k a" style="--d:.1">Your #1 was not close.</p>
+    <div class="gap"></div>
+    <div class="big pop" style="--d:.4"><span data-count="28">0</span></div>
+    <div class="h s a" style="--d:.9">Tesla applications.</div>
+    <div class="gap"></div>
+    <p class="p a" style="--d:1.4">Nobody asked you to. You counted anyway.</p>
+    <div class="gap"></div>
+    <p class="p a" style="--d:2.4"><b>They said yes once.</b> Two teams wanted you.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide s6" data-dur="6500" aria-label="Rejections">
+    <div class="rain shape" aria-hidden="true" id="rain"></div>
+    <p class="k a" style="--d:.1">Your inbox said "unfortunately"</p>
+    <div class="gap"></div>
+    <div class="big pop" style="--d:.4"><span data-count="70">0</span>+</div>
+    <div class="h s a" style="--d:.9">times.</div>
+    <div class="gap"></div>
+    <p class="p a" style="--d:1.5">You opened the next application.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide s7" data-dur="7500" data-ui="dark" aria-label="What worked">
+    <p class="k a" style="--d:.1">What actually worked</p>
+    <div class="vs">
+      <div class="row a" style="--d:.4">
+        <div class="lab"><span>Cold applications</span><b>10%</b></div>
+        <div class="track"><i style="--v:10;--d:.8"></i></div>
+      </div>
+      <div class="row win a" style="--d:1.2">
+        <div class="lab"><span>Warm intros</span><b>61%</b></div>
+        <div class="track"><i style="--v:61;--d:1.6"></i></div>
+      </div>
+    </div>
+    <div class="gap2"></div>
+    <p class="p a" style="--d:2.4">Share that got a first round. <b>Six times better</b> when a person was involved.</p>
+    <p class="foot">Through late October · 89 cold, 36 warm</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide s8" data-dur="7000" aria-label="Roles">
+    <p class="k a" style="--d:.1">Meanwhile, you had jobs.</p>
+    <div class="gap"></div>
+    <div class="big pop" style="--d:.4"><span data-count="11">0</span></div>
+    <div class="h s a" style="--d:.9">roles at 10 companies.</div>
+    <div class="gap"></div>
+    <p class="p a" style="--d:1.4">Peak: <b>5 at the same time</b>. Also, school.</p>
+    <div class="tape shape" aria-hidden="true"><span>Salesforce ✦ Nike × Cal ✦ Jobright ✦ Launchpoint ✦ Uber ✦ Ditto ✦ swsh ✦ DoorList ✦ Polymath Arena ✦ Agnes AI ✦ GLO ✦ Salesforce ✦ Nike × Cal ✦ Jobright ✦ Launchpoint ✦ Uber ✦ Ditto ✦ swsh ✦ DoorList ✦ Polymath Arena ✦ Agnes AI ✦ GLO ✦ </span></div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide s9" data-dur="7000" data-ui="dark" aria-label="Views">
+    <p class="k a" style="--d:.1">People watched.</p>
+    <div class="gap"></div>
+    <div class="big m pop" style="--d:.4"><span data-count="15">0</span>M+</div>
+    <div class="h s a" style="--d:.9">views on campaigns you ran.</div>
+    <div class="rows">
+      <div class="a" style="--d:1.3"><span>Pump.fun + Suno</span><b>10M+</b></div>
+      <div class="a" style="--d:1.5"><span>swsh fan accounts</span><b>3M+</b></div>
+      <div class="a" style="--d:1.7"><span>DoorList March Madness</span><b>2M+</b></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide s10" data-dur="6500" data-ui="dark" aria-label="Automation">
+    <i class="shape blob" style="width:64cqw;height:64cqw;right:-24cqw;bottom:-16cqw;background:var(--ink);opacity:.12"></i>
+    <p class="k a" style="--d:.1">You deleted work.</p>
+    <div class="gap"></div>
+    <div class="big m pop" style="--d:.4"><span data-count="1800" data-comma="1">0</span></div>
+    <div class="h s a" style="--d:.9">hours a year, gone.</div>
+    <div class="gap"></div>
+    <p class="p a" style="--d:1.4">Recruiting busywork you automated at Salesforce. That is <b>36,500 clicks</b> nobody makes anymore.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide s11" data-dur="6500" aria-label="Event">
+    <p class="k a" style="--d:.1">You threw a party.</p>
+    <div class="gap"></div>
+    <div class="h a" style="--d:.4">SF Tech Week showcase</div>
+    <div class="trio">
+      <div class="pop" style="--d:.8"><b>1,000+</b><span>people applied</span></div>
+      <div class="pop" style="--d:1"><b>200+</b><span>builders got in</span></div>
+      <div class="pop" style="--d:1.2"><b>16</b><span>startups showed up</span></div>
+      <div class="pop" style="--d:1.4"><b>70%</b><span>left with interview next steps</span></div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide s12" data-dur="7000" aria-label="Persona">
+    <i class="shape ring spin" style="width:120cqw;height:120cqw;left:-10cqw;top:20cqw;color:rgba(143,91,255,.35);border-width:1cqw;border-style:dashed"></i>
+    <p class="k a" style="--d:.1">Your 2026 persona</p>
+    <div class="gap"></div>
+    <div class="persona pop" style="--d:.5">
+      <p class="k">You are</p>
+      <div class="h">The Volume Shooter</div>
+      <div class="gap"></div>
+      <p class="p">Takes every shot. Hears "unfortunately" a lot. Only needed one yes.</p>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide s13" data-dur="0" aria-label="Summary">
+    <div class="card pop" id="card" style="--d:.2">
+      <h2>Alex Xiao<br><span>2026 Wrapped</span></h2>
+      <div class="grid">
+        <div><small>Applications</small><b>175+</b></div>
+        <div><small>Top company</small><b>Tesla</b></div>
+        <div><small>"Unfortunately"</small><b>70+</b></div>
+        <div><small>Roles held</small><b>11</b></div>
+        <div><small>Campaign views</small><b>15M+</b></div>
+        <div><small>Hours automated</small><b>1,800</b></div>
+      </div>
+      <div class="next"><span>Tesla · Palo Alto · Jan 11</span><b>Next up, 2027</b></div>
+      <p class="url">alexxiao1227.github.io/wrapped</p>
+    </div>
+    <div class="actions a" style="--d:.9">
+      <button class="btn primary" id="share">Share</button>
+      <button class="btn ghost" id="replay">Replay</button>
+    </div>
+    <a class="back a" style="--d:1.1" href="./">Back to the portfolio →</a>
+  </section>
+
+  <button class="nav prev" id="prev" aria-label="Previous"></button>
+  <button class="nav next" id="next" aria-label="Next"></button>
+  <div class="toast" id="toast" role="status"></div>
+</main>
+</div>
+
+<script>
+(() => {
+  const phone = document.getElementById('phone');
+  const slides = [...document.querySelectorAll('.slide')];
+  const bars = document.getElementById('bars');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach(() => { const i = document.createElement('i'); i.appendChild(document.createElement('b')); bars.appendChild(i); });
+  const fills = [...bars.querySelectorAll('b')];
+  document.getElementById('rain').textContent = Array(120).fill('unfortunately').join(' ');
+
+  let cur = -1, t0 = 0, elapsed = 0, paused = false, raf = 0, started = false;
+
+  function count(el) {
+    const to = +el.dataset.count, comma = el.dataset.comma;
+    const f = v => comma ? Math.round(v).toLocaleString('en-US') : Math.round(v);
+    if (reduce) { el.textContent = f(to); return; }
+    const s = performance.now(), dur = 1300, delay = 450;
+    const step = now => {
+      const p = Math.max(0, Math.min(1, (now - s - delay) / dur));
+      el.textContent = f(to * (1 - Math.pow(1 - p, 4)));
+      if (p < 1 && slides[cur] && slides[cur].contains(el)) requestAnimationFrame(step);
+      else if (p >= 1) el.textContent = f(to);
+    };
+    requestAnimationFrame(step);
+  }
+
+  function show(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    if (i === cur) return;
+    slides.forEach((s, k) => s.classList.toggle('on', k === i));
+    cur = i; elapsed = 0; t0 = performance.now();
+    phone.classList.toggle('dark-ui', slides[i].dataset.ui === 'dark');
+    fills.forEach((b, k) => b.style.transform = `scaleX(${k < i ? 1 : 0})`);
+    slides[i].querySelectorAll('[data-count]').forEach(count);
+    document.getElementById('next').style.display = i === slides.length - 1 ? 'none' : '';
+  }
+
+  function loop(now) {
+    raf = requestAnimationFrame(loop);
+    if (cur < 0) return;
+    const dur = +slides[cur].dataset.dur;
+    if (!dur) { fills[cur].style.transform = 'scaleX(1)'; return; }
+    if (cur === 0 && !started) return;            // cover waits for the first tap
+    if (!paused) elapsed += now - t0;
+    t0 = now;
+    const p = Math.min(1, elapsed / dur);
+    fills[cur].style.transform = `scaleX(${p})`;
+    if (p >= 1) show(cur + 1);
+  }
+
+  const next = () => { started = true; show(cur + 1); };
+  const prev = () => show(cur - 1);
+
+  // tap zones, with press-and-hold to pause
+  let downAt = 0, held = false, holdT = 0;
+  const down = () => { downAt = performance.now(); held = false; holdT = setTimeout(() => { held = true; paused = true; }, 220); };
+  const up = fn => () => { clearTimeout(holdT); if (held) { paused = userPaused; held = false; return; } fn(); };
+  let userPaused = false;
+  ['next', 'prev'].forEach(id => {
+    const el = document.getElementById(id);
+    el.addEventListener('pointerdown', down);
+    el.addEventListener('pointerup', up(id === 'next' ? next : prev));
+    el.addEventListener('pointerleave', () => { clearTimeout(holdT); if (held) { paused = userPaused; held = false; } });
+    el.addEventListener('contextmenu', e => e.preventDefault());
+  });
+  const pauseBtn = document.getElementById('pause');
+  const PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+  const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  pauseBtn.addEventListener('click', () => { userPaused = !userPaused; paused = userPaused; started = true; pauseBtn.innerHTML = userPaused ? PLAY : PAUSE; pauseBtn.setAttribute('aria-label', userPaused ? 'Play' : 'Pause'); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft') prev();
+  });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) paused = true; else { paused = userPaused; t0 = performance.now(); } });
+
+  const toast = document.getElementById('toast'); let tt;
+  const say = m => { toast.textContent = m; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('on'), 1800); };
+  document.getElementById('replay').addEventListener('click', () => { started = true; cur = -1; show(0); elapsed = 0; });
+  document.getElementById('share').addEventListener('click', async () => {
+    const data = { title: 'Alex Xiao · 2026 Wrapped', text: '175+ applications. 70+ rejections. One yes from Tesla.', url: 'https://alexxiao1227.github.io/wrapped' };
+    try {
+      if (navigator.share) await navigator.share(data);
+      else { await navigator.clipboard.writeText(data.url); say('Link copied'); }
+    } catch (e) { /* share sheet dismissed */ }
+  });
+
+  const startAt = parseInt(new URLSearchParams(location.search).get('s') || '0', 10);
+  if (startAt > 0) { started = true; userPaused = paused = location.search.includes('still'); }
+  show(startAt || 0);
+  raf = requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
